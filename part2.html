@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>دليل سلطنة عمان السياحي</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-light:#f7fbfc;
+  --bg-dark:#0f1724;
+  --text-light:#0f1724;
+  --text-dark:#f7fbfc;
+  --accent:#0b7285;
+  --accent-2:#0ea5a4;
+  --card:#ffffff;
+  --card-dark:#1e293b;
+  --radius:12px;
+  --shadow:0 6px 20px rgba(2,6,23,0.08);
+  --transition:0.3s ease-in-out;
+}
+body{margin:0;font-family:'Cairo','Tajawal',sans-serif;transition:background var(--transition),color var(--transition);}
+body.light{background:var(--bg-light);color:var(--text-light);}
+body.dark{background:var(--bg-dark);color:var(--text-dark);}
+header{position:sticky;top:0;background:var(--bg-light);display:flex;justify-content:space-between;align-items:center;padding:0.8rem 1rem;box-shadow:var(--shadow);z-index:100;transition:background var(--transition);}
+body.dark header{background:#1e293b;}
+.logo{font-weight:700;font-size:1.3rem;color:var(--accent);}
+.nav-links{display:flex;gap:1rem;}
+.nav-links a{text-decoration:none;color:var(--text-light);padding:0.5rem 0.8rem;border-radius:var(--radius);transition:background var(--transition);}
+body.dark .nav-links a{color:var(--text-dark);}
+.nav-links a:hover{background:var(--accent-2);color:white;}
+.dark-toggle{background:none;border:none;font-size:1.2rem;cursor:pointer;}
+.container{max-width:1200px;margin:0 auto;padding:1rem;}
+.hero{display:flex;flex-direction:column;align-items:center;gap:1rem;text-align:center;margin-top:1rem;}
+.hero img{width:100%;max-width:700px;border-radius:var(--radius);box-shadow:var(--shadow);}
+section{margin:2rem 0;}
+h2,h3,h4{margin:0.5rem 0;}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem;margin-top:1rem;}
+.card{background:var(--card);padding:1rem;border-radius:var(--radius);box-shadow:var(--shadow);transition:transform var(--transition);}
+body.dark .card{background:var(--card-dark);}
+.card img{width:100%;border-radius:var(--radius);margin-top:0.5rem;}
+select{padding:0.5rem;border-radius:var(--radius);border:1px solid #ccc;margin-top:0.5rem;}
+.map-wrapper{width:100%;height:350px;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);margin-top:1rem;}
+@media(max-width:768px){.nav-links{display:none;}.cards{grid-template-columns:1fr;}}
+</style>
+</head>
+<body class="light">
+<header>
+  <div class="logo">دليل سلطنة عمان السياحي</div>
+  <nav class="nav-links">
+    <a href="#hero">الرئيسية</a>
+    <a href="#attractions">معالم</a>
+    <a href="#media">وسائط</a>
+    <a href="#contact">خريطة</a>
+  </nav>
+  <button class="dark-toggle" id="darkToggle">🌙</button>
+</header>
+
+<div class="container">
+  <section id="hero" class="hero">
+    <h2 id="heroTitle">مسقط</h2>
+    <img id="heroImg" src="2000.jpeg" alt="صورة محافظة مسقط">
+    <p id="provinceDesc">مسقط عاصمة سلطنة عمان، مدينة ساحلية تجمع بين الحداثة والتراث...</p>
+    <label>اختر المحافظة:
+      <select id="provinceSelect">
+        <option value="muscat">مسقط</option>
+        <option value="musandam">مسندم</option>
+        <option value="alDakhiliyah">الداخلية</option>
+        <option value="alSharqiyah">الشرقية</option>
+        <option value="alBatinah">الباطنة</option>
+        <option value="dhofar">ظفار</option>
+      </select>
+    </label>
+  </section>
+
+  <section id="attractions">
+    <h3>المعالم والأنشطة</h3>
+    <div class="cards" id="attractionsList"></div>
+  </section>
+
+  <section id="media">
+    <h3>الوسائط</h3>
+    <div class="cards">
+      <div class="card">
+        <img id="mediaImg" src="2000.jpeg" alt="صورة مسقط">
+      </div>
+      <div class="card">
+        <video id="mediaVideo" controls src="videos/muscat.mp4" style="width:100%;border-radius:12px;"></video>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h3>خريطة</h3>
+    <div class="map-wrapper" id="mapWrapper">
+      <iframe src="https://www.google.com/maps?q=Muscat,Oman&output=embed" loading="lazy"></iframe>
+    </div>
+  </section>
+</div>
+
+<script>
+const provinces = {
+  muscat:{title:"مسقط",desc:"مسقط عاصمة سلطنة عمان، مدينة ساحلية تجمع بين الحداثة والتراث، تتميز بسواحلها الجميلة وأسواقها التاريخية وقصورها العريقة.",hero:"",Img:"0310.jpg",mediaVideo:"videoplayback(1).mp4",map:"https://www.google.com/maps?q=Muscat,Oman&output=embed",attractions:[
+    {title:"قصر العلم",desc:"المقر الرسمي للسلطان، مثال على العمارة العمانية الحديثة.",img:"9090.jpg"},
+    {title:"الجامع الكبير",desc:"أحد أكبر المساجد في الشرق الأوسط، تصميم فني ومعماري رائع.",img:"1234.jpg"},
+    {title:"الميناء العماني",desc:"شاطئ ومسارات بحرية لرحلات القوارب والغوص.",img:"009.jpg"},
+    {title:"أسواق مسقط",desc:"أسواق تقليدية مثل سوق مطرح وسوق المدينة، لشراء الحرف اليدوية والبهارات.",img:"102.jpg"}]},
+  musandam:{title:"مسندم",desc:"محافظة جبلية وشبه جزيرة شمالية، تتميز بالخلجان البحرية والمناظر الطبيعية الخلابة.",hero:"images/musandam.jpg",mediaImg:"images/musandam-media.jpg",mediaVideo:"videoplayback.mp4",map:"https://www.google.com/maps?q=Musandam,Oman&output=embed",attractions:[
+    {title:"القلاع البحرية",desc:"مواقع تاريخية تحكي قصص الحماية البحرية والتجارة القديمة.",img:"09.jpg"},
+    {title:"الأنشطة البحرية",desc:"رحلات القوارب ومشاهدة الدلافين والغطس.",img:"ffg.jpg"},
+    {title:"الجبال والخلجان",desc:"مناظر طبيعية خلابة للجبال والمضايق الساحلية.",img:"om.jpg"},
+    {title:"القرى التقليدية",desc:"زيارة قرى شعبية للتعرف على الثقافة المحلية.",img:"90.jpg"}]},
+  alDakhiliyah:{title:"الداخلية",desc:"محافظة جبلية في قلب عمان، تشتهر بالجبال والوديان والقصور التاريخية.",hero:"images/dakhiliyah.jpg",mediaImg:"images/dakhiliyah-media.jpg",mediaVideo:"videoplayback(2).mp4",map:"https://www.google.com/maps?q=Al+Dakhiliyah,Oman&output=embed",attractions:[
+    {title:"نزوى القديمة",desc:"قلعة نزوى التاريخية وسوقها الشهير.",img:"n.jpg"},
+    {title:"جبال الحجر",desc:"سلسلة جبال توفر رحلات تسلق ومشاهد خلابة.",img:"8.jpeg"},
+    {title:"الواحات الزراعية",desc:"مشاهد زراعية ونخيل ووديان خضراء.",img:"16.jpeg"}]},
+  alSharqiyah:{title:"الشرقية",desc:"شواطئ هادئة، مدن ساحلية وموانئ بحرية، تشتهر بالصيد والغوص.",hero:"images/sharqiyah.jpg",mediaImg:"images/sharqiyah-media.jpg",mediaVideo:"videoplayback(3).mp4",map:"https://www.google.com/maps?q=Al+Sharqiyah,Oman&output=embed",attractions:[
+    {title:"مدينة صور",desc:"مشهورة بسفن الخشب التقليدية والرحلات البحرية.",img:"19.jpg"},
+    {title:"الشواطئ الرملية",desc:"استرخاء ورياضات مائية.",img:"88.jpg"},
+    {title:"القرى الساحلية",desc:"تعرف على الثقافة البحرية التقليدية.",img:"wadi.jpg"}]},
+  alBatinah:{title:"الباطنة",desc:"محافظة ساحلية شمالية، مزدهرة بالزراعة والموانئ والتجارة.",hero:"images/batinah.jpg",mediaImg:"images/batinah-media.jpg",mediaVideo:"videoplayback()",map:"https://www.google.com/maps?q=Al+Batinah,Oman&output=embed",attractions:[
+    {title:"صحار",desc:"مدينة تجارية وميناء رئيسي.",img:"x.jpg"},
+    {title:"الواحات الخضراء",desc:"مشاهد طبيعية خلابة وأنشطة زراعية.",img:"p2.jpg"},
+    {title:"الشواطئ",desc:"سواحل رائعة للسباحة والرياضات البحرية.",img:"r4.jpeg"}]},
+  dhofar:{title:"ظفار",desc:"محافظة جنوبية، تشتهر بالخريف، جبال الحافة، الشواطئ، وسحر الطبيعة.",hero:"images/dhofar.jpg",mediaImg:"images/dhofar-media.jpg",mediaVideo:"videoplayback(4)",map:"https://www.google.com/maps?q=Dhofar,Oman&output=embed",attractions:[
+    {title:"صلالة",desc:"المدينة الرئيسية، أسواق وزهور الخريف.",img:"xx2.jpeg"},
+    {title:"جبال الحافة",desc:"مناظر طبيعية خلابة ومواقع سياحية.",img:"2x.jpg"},
+    {title:"الشواطئ الرملية",desc:"استرخاء وأنشطة بحرية.",img:"0-3.jpg"},
+    {title:"الأودية والواحات",desc:"رحلات الطبيعة والتجارب البيئية.",img:"ggh.jpeg"}]}
+};
+
+const provinceSelect=document.getElementById('provinceSelect');
+const heroTitle=document.getElementById('heroTitle');
+const heroImg=document.getElementById('heroImg');
+const provinceDesc=document.getElementById('provinceDesc');
+const attractionsList=document.getElementById('attractionsList');
+const mediaImg=document.getElementById('mediaImg');
+const mediaVideo=document.getElementById('mediaVideo');
+const mapWrapper=document.getElementById('mapWrapper').querySelector('iframe');
+provinceSelect.addEventListener('change',()=>updateProvince(provinceSelect.value));
+
+function updateProvince(key){
+  const p=provinces[key];
+  if(!p)return;
+  heroTitle.textContent=p.title;
+  heroImg.src=p.hero;
+  heroImg.alt=`صورة محافظة ${p.title}`;
+  provinceDesc.textContent=p.desc;
+  mediaImg.src=p.mediaImg;
+  mediaImg.alt=`صورة ${p.title}`;
+  mediaVideo.src=p.mediaVideo;
+  mapWrapper.src=p.map;
+  attractionsList.innerHTML='';
+  p.attractions.forEach(a=>{
+    const card=document.createElement('div');
+    card.className='card';
+    card.innerHTML=`<h4>${a.title}</h4><p>${a.desc}</p><img src="${a.img}" alt="${a.title}"/>`;
+    attractionsList.appendChild(card);
+  });
+}
+
+// الوضع الداكن
+const darkToggle=document.getElementById('darkToggle');
+darkToggle.addEventListener('click',()=>{
+  document.body.classList.toggle('dark');
+  document.body.classList.toggle('light');
+  darkToggle.textContent=document.body.classList.contains('dark')?'☀️':'🌙';
+});
+</script>
+</body>
+</html>
