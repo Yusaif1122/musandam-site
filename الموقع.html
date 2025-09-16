@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>محافظة مسندم — دليل تعريفي احترافي</title>
+  <meta name="description" content="دليل تعريفي حديث لِمحافظة مسندم: تاريخ، سياحة، معالم، معرض وسائط وفيديو، خريطة واتصال." />
+  <meta name="author" content="Musandam Tourism" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+
+  <style>
+    :root{
+      --bg:#f7fbfc; --card:#ffffff; --muted:#6b7280; --accent:#0b7285; --accent-2:#0ea5a4; --glass: rgba(255,255,255,0.6);
+      --radius:14px; --container:1200px; --shadow: 0 6px 20px rgba(2,6,23,0.08);
+      --transition: 250ms cubic-bezier(.2,.9,.3,1);
+    }
+    /* Reset and basics */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family: 'Cairo', 'Tajawal', system-ui, -apple-system, "Segoe UI", Roboto, 'Helvetica Neue', Arial;
+      background: linear-gradient(180deg, #f6fbfc 0%, #eef8f9 100%);
+      color:#0f1724; line-height:1.6; -webkit-font-smoothing:antialiased;
+    }
+    a{color:inherit; text-decoration:none}
+    img,video{max-width:100%;height:auto;display:block;border-radius:8px}
+    .container{max-width:var(--container);margin:0 auto;padding:1rem}
+
+    /* Skip link */
+    .skip-link{position:absolute;left:1rem;top:1rem;background:#111;color:white;padding:.5rem .75rem;border-radius:8px;z-index:999;transform:translateY(-120%);transition:transform .2s}
+    .skip-link:focus{transform:translateY(0)}
+
+    /* Header */
+    header.site-header{backdrop-filter: blur(6px);position:sticky;top:0;z-index:60;background:linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.55));box-shadow:0 4px 14px rgba(2,6,23,0.06)}
+    .header-inner{display:flex;align-items:center;gap:1rem;justify-content:space-between;padding:.95rem 0}
+    .logo{font-weight:700;margin:0;font-size:1.15rem;letter-spacing:.2px}
+    .logo span{color:var(--accent);}
+    nav.main-nav{display:flex;gap:1rem;align-items:center}
+    nav.main-nav a{color:var(--muted);padding:.5rem .65rem;border-radius:10px;transition:var(--transition)}
+    nav.main-nav a:hover, nav.main-nav a:focus{background:var(--glass);color:var(--accent-2)}
+
+    .menu-toggle{display:none;background:none;border:0;font-size:1.2rem;padding:.4rem .6rem;border-radius:10px}
+
+    /* Hero */
+    .hero{padding:3rem 0}
+    .hero-inner{display:grid;grid-template-columns:1fr 520px;gap:2rem;align-items:center}
+    .hero-text h2{font-size:2rem;margin:.2rem 0 1rem}
+    .hero-text p{color:var(--muted);font-size:1.05rem}
+    .btn{display:inline-block;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white;padding:.65rem 1rem;border-radius:10px;box-shadow:0 8px 26px rgba(14,165,164,0.12);border:0;cursor:pointer;transition:transform .18s}
+    .btn:hover{transform:translateY(-3px)}
+
+    .hero-image{display:flex;justify-content:center}
+    .hero-image img{width:100%;max-width:520px;border-radius:16px;box-shadow:var(--shadow)}
+
+    /* Sections */
+    section.section{padding:2.2rem 0}
+    .alt-bg{background:linear-gradient(180deg, rgba(240,249,250,0.6), transparent)}
+    h3{font-size:1.15rem;margin-top:0}
+    .two-col{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:1rem}
+
+    .attraction-list{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;list-style:none;padding:0;margin:1rem 0}
+    .attraction-list li{background:var(--card);padding:1rem;border-radius:12px;box-shadow:var(--shadow)}
+    .attraction-list h4{margin:.2rem 0 .5rem}
+    .attraction-list p{color:var(--muted);font-size:.96rem}
+
+    /* Media grid */
+    .media-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    figure{margin:0}
+    figcaption{margin-top:.5rem;color:var(--muted);font-size:.95rem}
+    video{border-radius:12px;box-shadow:var(--shadow)}
+
+    /* Contact grid */
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;align-items:start}
+    form{background:var(--card);padding:1rem;border-radius:12px;box-shadow:var(--shadow)}
+    label{display:block;margin:.6rem 0 .3rem;font-weight:600}
+    input,textarea{width:100%;padding:.65rem;border:1px solid #e6eef0;border-radius:8px;font-size:1rem}
+    .form-msg{margin-top:.6rem;color:var(--accent-2)}
+
+    .map-wrapper{height:320px;border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+    .map-wrapper iframe{width:100%;height:100%;border:0}
+
+    /* Footer */
+    .site-footer{padding:1.2rem 0;margin-top:2rem}
+    .site-footer p{color:var(--muted);margin:.2rem 0}
+
+    /* Responsive */
+    @media (max-width:1000px){
+      .hero-inner{grid-template-columns:1fr;}
+      .media-grid{grid-template-columns:1fr}
+      .two-col{grid-template-columns:1fr}
+      .attraction-list{grid-template-columns:repeat(2,1fr)}
+      .contact-grid{grid-template-columns:1fr}
+    }
+    @media (max-width:640px){
+      nav.main-nav{display:none}
+      .menu-toggle{display:block}
+      .attraction-list{grid-template-columns:1fr}
+      .header-inner{gap:.5rem}
+    }
+
+    /* Small utilities */
+    .muted{color:var(--muted)}
+    .badge{background:rgba(14,165,164,0.12);color:var(--accent);padding:.25rem .5rem;border-radius:999px;font-weight:700;font-size:.8rem}
+
+    /* Focus states */
+    a:focus, button:focus, input:focus, textarea:focus{outline:3px solid rgba(14,165,164,0.18);outline-offset:3px}
+
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">تخطي إلى المحتوى</a>
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <div style="display:flex;align-items:center;gap:.75rem">
+        <h1 class="logo">محافظة <span>مسندم</span></h1>
+        <span class="badge" aria-hidden="true">دليل رسمي</span>
+      </div>
+
+      <nav class="main-nav" aria-label="القائمة الرئيسية">
+        <a href="#home">الرئيسية</a>
+        <a href="#about">نبذة</a>
+        <a href="#attractions">معالم</a>
+        <a href="#gallery">وسائط</a>
+        <a href="#contact">تواصل</a>
+      </nav>
+
+      <button id="menuToggle" class="menu-toggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="فتح القائمة">
+        ☰
+      </button>
+    </div>
+
+    <!-- Mobile menu (hidden on desktop) -->
+    <div id="mobileMenu" style="display:none;background:var(--card);padding:.75rem;border-top:1px solid #eef6f7">
+      <div class="container" style="display:flex;flex-direction:column;gap:.35rem">
+        <a href="#home">الرئيسية</a>
+        <a href="#about">نبذة</a>
+        <a href="#attractions">معالم</a>
+        <a href="#gallery">وسائط</a>
+        <a href="#contact">تواصل</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section id="home" class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h2>أهلاً بك في مسندم — حيث يلتقي البحر بالجبل</h2>
+          <p class="muted">اكتشف التاريخ البحري، التجارب الطبيعية الفريدة، والضيافة الأصيلة. دليل بسيط ومنسق لزوار محافظة مسندم.</p>
+          <p style="margin:.8rem 0;color:var(--muted)">نص تعريفي قصير يبرز أهم المزايا: مضيق هرمز، الخلجان الصخرية، رحلات الدلافين، والغوص.</p>
+          <div style="display:flex;gap:.6rem;margin-top:.6rem;flex-wrap:wrap">
+            <a class="btn" href="#about">المزيد عن مسندم</a>
+            <a class="btn" href="#gallery" style="background:transparent;color:var(--accent);box-shadow:none;border:1px solid rgba(11,114,133,0.08)">مشاهدة الوسائط</a>
+          </div>
+          <ul style="display:flex;gap:.6rem;margin-top:1rem;padding:0;list-style:none">
+            <li class="muted">مدة الزيارة المقترحة: يومين - 4 أيام</li>
+            <li class="muted">أفضل وقت للزيارة: أكتوبر - أبريل</li>
+          </ul>
+        </div>
+
+        <div class="hero-image" aria-hidden="false">
+          <picture>
+            <source srcset="images/hero-large.jpg 1200w, images/hero-medium.jpg 800w" sizes="(min-width:900px) 520px, 100vw">
+            <img src="170041.jpg" alt="إطلالة طبيعية في مسندم مع قارب في الماء وجبال صخرية" loading="lazy"/>
+          </picture>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section container" aria-labelledby="aboutTitle">
+      <h3 id="aboutTitle">نبذة تاريخية وجغرافية</h3>
+      <p class="muted">تقع محافظة مسندم في أقصى شمال سلطنة عُمان وتطل على مضيق هرمز. تاريخها البحري وتراثها الثقافي يجعلها مقصدًا متميزًا للزوار الباحثين عن الطبيعة والهدوء.</p>
+
+      <div class="two-col" style="margin-top:1rem">
+        <div style="background:var(--card);padding:1rem;border-radius:12px;box-shadow:var(--shadow)">
+          <h4>الموقع الاستراتيجي</h4>
+          <p class="muted">قربها من مضيق هرمز منحها دورًا تجاريًا وعسكريًا عبر التاريخ، بالإضافة إلى طرق وصيغة من التبادل الثقافي.</p>
+        </div>
+        <div style="background:var(--card);padding:1rem;border-radius:12px;box-shadow:var(--shadow)">
+          <h4>البيئة والطبيعة</h4>
+          <p class="muted">تتنوع بين سواحل صخرية، خلجان، شواطئ رملية وأراضٍ جبلية توفر فرصًا ممتازة لمشاهدة الحياة البحرية والغطس.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="attractions" class="section alt-bg" aria-labelledby="attrTitle">
+      <div class="container">
+        <h3 id="attrTitle">أهم المعالم والأنشطة</h3>
+        <ul class="attraction-list" aria-label="قائمة الأنشطة والمعالم">
+          <li>
+            <h4>قلاع ومواقع تاريخية</h4>
+            <p class="muted">اكتشف الآثار والقلوع التي تحكي قصص الحماية البحرية والتجارة عبر العصور.</p>
+          </li>
+          <li>
+            <h4>الأنشطة البحرية</h4>
+            <p class="muted">رحلات القوارب، مشاهدة الدلافين، الغوص والسنوركلينغ في مياه صافية.</p>
+          </li>
+          <li>
+            <h4>التراث الثقافي</h4>
+            <p class="muted">أسواق محلية، حرف يدوية، وتجارب طعام تقليدي تُعرفك بثقافة المنطقة.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="gallery" class="section container" aria-labelledby="mediaTitle">
+      <h3 id="mediaTitle">الوسائط — صورة واحدة وفيديو</h3>
+      <p class="muted">تم تقليل المحتوى لتجربة أنيقة ومركزة: صورة اختيارية عالية الجودة وفيديو تعريفي قصير.</p>
+
+      <div class="media-grid">
+        <figure>
+          <img src="R (1).jpeg" alt="شاطئ هادئ في مسندم مع قارب تقليدي" loading="lazy" width="1200" height="800" />
+          <figcaption>شاطئ هادئ في مسندم — منظر يوضح التقاء البحر والصخور.</figcaption>
+        </figure>
+
+        <figure>
+          <video controls preload="metadata" poster="videoplayback.mp4" aria-label="فيديو تعريفي قصير لمحافظة مسندم">
+            <source src="videoplayback.mp4" type="video/mp4">
+            متصفحك لا يدعم تشغيل الفيديو.
+          </video>
+          <figcaption>فيديو قصير (دقيقة أو دقيقتين) يظهر الأنشطة البحرية والمشاهد الطبيعية.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="contact" class="section alt-bg" aria-labelledby="contactTitle">
+      <div class="container contact-grid">
+        <div>
+          <h3 id="contactTitle">تواصل معنا</h3>
+          <form id="contactForm" novalidate>
+            <label for="name">الاسم الكامل</label>
+            <input id="name" name="name" type="text" placeholder="اكتب اسمك الكامل" required aria-required="true" />
+
+            <label for="email">البريد الإلكتروني</label>
+            <input id="email" name="email" type="email" placeholder="name@example.com" required aria-required="true" />
+
+            <label for="message">الرسالة</label>
+            <textarea id="message" name="message" rows="5" placeholder="كيف يمكننا مساعدتك؟" required aria-required="true"></textarea>
+
+            <button type="submit" class="btn">أرسل الرسالة</button>
+            <p id="formMsg" class="form-msg" aria-live="polite"></p>
+          </form>
+        </div>
+
+        <div>
+          <h3>الخريطة</h3>
+          <div class="map-wrapper" role="region" aria-label="خريطة محافظة مسندم">
+            <iframe title="خريطة مسندم" src="https://www.google.com/maps?q=Musandam+Oman&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+
+          <div style="margin-top:.8rem;background:var(--card);padding:.75rem;border-radius:12px;box-shadow:var(--shadow)">
+            <strong>معلومات سريعة</strong>
+            <p class="muted" style="margin:.4rem 0 0">ساعات العمل الاستشارية: 09:00 — 17:00 (بتوقيت عمان). خدمات مرشدي سياحي محليين متاحة عند الحجز.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap">
+      <p>© 2025 — كل الحقوق محفوظة | دليل محافظة مسندم</p>
+      <p class="small muted"</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    (function(){
+      const btn = document.getElementById('menuToggle');
+      const menu = document.getElementById('mobileMenu');
+      btn.addEventListener('click', ()=>{
+        const open = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!open));
+        if(open){ menu.style.display='none'; btn.innerText='☰'; }
+        else { menu.style.display='block'; btn.innerText='✖'; }
+      });
+    })();
+
+    // Simple contact form handling (client-side demo)
+    (function(){
+      const form = document.getElementById('contactForm');
+      const msg = document.getElementById('formMsg');
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        // basic validation
+        const name = form.name.value.trim();
+        const email = form.email.value.trim();
+        const message = form.message.value.trim();
+        if(!name || !email || !message){
+          msg.textContent = 'يرجى تعبئة جميع الحقول.';
+          return;
+        }
+        // fake async submit demo
+        msg.textContent = 'جاري الإرسال...';
+        setTimeout(()=>{
+          msg.textContent = 'تم استلام رسالتك بنجاح! سنتواصل معك قريباً.';
+          form.reset();
+        }, 900);
+      });
+    })();
+
+    // Accessibility: Allow escape to close mobile menu
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === 'Escape'){
+        const menu = document.getElementById('mobileMenu');
+        const btn = document.getElementById('menuToggle');
+        if(menu && menu.style.display === 'block'){
+          menu.style.display='none'; btn.setAttribute('aria-expanded','false'); btn.innerText='☰';
+        }
+      }
+    });
+  </script>
+</body>
+</html>
